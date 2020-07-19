@@ -1,0 +1,35 @@
+version: "3.5"
+services:
+  app:
+    image: maria-seq
+    container_name: maria-seq
+    build:
+      context: .
+      args:
+        - NODE_ENV=${NODE_ENV}
+    volumes:
+      - ./:/home/node/app
+      - /home/node/app/node_modules
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - SERVICE_NAME=maria-seq
+    networks:
+      - maria-seq
+  maria_db:
+    image: mariadb:10
+    container_name: maria-seq-mariadb
+    environment:
+      - MYSQL_DATABASE=drfmb
+      - MYSQL_ROOT_PASSWORD=6ZDL-,aWQV4{n_gB
+      - MYSQL_USER=drfmb
+      - MYSQL_PASSWORD=6ZDL-,aWQV4{n_gB
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - maria-seq
+networks:
+  maria-seq:
+    driver: bridge
+
+volumes:
+  mariadb_data:

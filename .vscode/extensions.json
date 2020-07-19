@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "prisma.prisma",
+    "prisma.vscode-graphql",
+    "redhat.vscode-yaml",
+    "mikestead.dotenv"
+  ]
+}
